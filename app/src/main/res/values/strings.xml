@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ComposeChat</string>
+    <string name="cd_button_send">Send</string>
+</resources>
