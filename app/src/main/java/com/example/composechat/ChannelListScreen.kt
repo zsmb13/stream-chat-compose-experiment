@@ -104,11 +104,8 @@ fun ChannelListItem(
 @Composable
 fun Avatar(channel: Channel) {
     AndroidView(
-        factory = { context ->
-            AvatarView(context).apply {
-                setChannelData(channel)
-            }
-        },
+        factory = { context -> AvatarView(context) },
+        update = { view -> view.setChannelData(channel) },
         modifier = Modifier.size(48.dp)
     )
 }
