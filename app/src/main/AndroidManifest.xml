@@ -3,7 +3,7 @@
     package="com.example.composechat">
 
     <application
-        android:name=".MyApplication"
+        android:name=".ChatApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"

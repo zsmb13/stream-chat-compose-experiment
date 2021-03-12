@@ -9,7 +9,7 @@ import io.getstream.chat.android.client.models.image
 import io.getstream.chat.android.client.models.name
 import io.getstream.chat.android.livedata.ChatDomain
 
-class MyApplication : Application() {
+class ChatApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
