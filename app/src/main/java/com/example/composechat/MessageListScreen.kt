@@ -97,8 +97,8 @@ fun MessageInput(
 @Composable
 fun MessageList(
     navController: NavHostController,
-    modifier: Modifier = Modifier,
     factory: MessageListViewModelFactory,
+    modifier: Modifier = Modifier,
     messageListViewModel: MessageListViewModel = viewModel(factory = factory),
 ) {
     val state by messageListViewModel.state.observeAsState()
@@ -135,26 +135,35 @@ fun MessageList(
 }
 
 @Composable
-fun MessageCard(message: MessageListItem.MessageItem) {
+fun MessageCard(messageItem: MessageListItem.MessageItem) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 8.dp, vertical = 4.dp),
-        horizontalAlignment = if (message.isMine) Alignment.End else Alignment.Start,
+        horizontalAlignment = when {
+            messageItem.isMine -> Alignment.End
+            else -> Alignment.Start
+        },
     ) {
         Card(
             modifier = Modifier.widthIn(max = 340.dp),
-            shape = cardShapeFor(message),
-            backgroundColor = if (message.isMine) MaterialTheme.colors.primary else MaterialTheme.colors.secondary,
+            shape = cardShapeFor(messageItem),
+            backgroundColor = when {
+                messageItem.isMine -> MaterialTheme.colors.primary
+                else -> MaterialTheme.colors.secondary
+            },
         ) {
             Text(
                 modifier = Modifier.padding(8.dp),
-                text = message.message.text,
-                color = if (message.isMine) MaterialTheme.colors.onPrimary else MaterialTheme.colors.onSecondary,
+                text = messageItem.message.text,
+                color = when {
+                    messageItem.isMine -> MaterialTheme.colors.onPrimary
+                    else -> MaterialTheme.colors.onSecondary
+                },
             )
         }
         Text(
-            text = message.message.user.name,
+            text = messageItem.message.user.name,
             fontSize = 12.sp,
         )
     }
@@ -163,9 +172,8 @@ fun MessageCard(message: MessageListItem.MessageItem) {
 @Composable
 fun cardShapeFor(message: MessageListItem.MessageItem): Shape {
     val roundedCorners = RoundedCornerShape(16.dp)
-    return if (message.isMine) {
-        roundedCorners.copy(bottomStart = CornerSize(0))
-    } else {
-        roundedCorners.copy(bottomEnd = CornerSize(0))
+    return when {
+        message.isMine -> roundedCorners.copy(bottomStart = CornerSize(0))
+        else -> roundedCorners.copy(bottomEnd = CornerSize(0))
     }
 }
