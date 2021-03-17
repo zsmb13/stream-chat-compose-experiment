@@ -28,9 +28,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.navigate
-import io.getstream.chat.android.client.ChatClient
 import io.getstream.chat.android.client.models.Channel
-import io.getstream.chat.android.client.models.Filters
 import io.getstream.chat.android.ui.avatar.AvatarView
 import io.getstream.chat.android.ui.channel.list.viewmodel.ChannelListViewModel
 import io.getstream.chat.android.ui.channel.list.viewmodel.factory.ChannelListViewModelFactory
@@ -40,12 +38,7 @@ import io.getstream.chat.android.ui.common.extensions.getDisplayName
 fun ChannelListScreen(
     navController: NavController,
     channelListViewModel: ChannelListViewModel = viewModel(
-        factory = ChannelListViewModelFactory(
-            filter = Filters.and(
-                Filters.eq("type", "messaging"),
-                Filters.`in`("members", listOf(ChatClient.instance().getCurrentUser()?.id!!)),
-            )
-        )
+        factory = ChannelListViewModelFactory()
     ),
 ) {
     val state by channelListViewModel.state.observeAsState()
