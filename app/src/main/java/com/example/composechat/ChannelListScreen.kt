@@ -43,7 +43,7 @@ fun ChannelListScreen(
         factory = ChannelListViewModelFactory(
             filter = Filters.and(
                 Filters.eq("type", "messaging"),
-                Filters.`in`("members", listOf(ChatClient.instance().getCurrentUser()?.id)),
+                Filters.`in`("members", listOf(ChatClient.instance().getCurrentUser()?.id!!)),
             )
         )
     ),
