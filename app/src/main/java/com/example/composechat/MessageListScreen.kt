@@ -37,7 +37,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavHostController
+import androidx.navigation.NavController
 import com.getstream.sdk.chat.adapter.MessageListItem
 import com.getstream.sdk.chat.viewmodel.MessageInputViewModel
 import com.getstream.sdk.chat.viewmodel.messages.MessageListViewModel
@@ -46,7 +46,7 @@ import io.getstream.chat.android.ui.message.list.viewmodel.factory.MessageListVi
 
 @Composable
 fun MessageListScreen(
-    navController: NavHostController,
+    navController: NavController,
     cid: String,
 ) {
     Column(Modifier.fillMaxSize()) {
@@ -96,7 +96,7 @@ fun MessageInput(
 
 @Composable
 fun MessageList(
-    navController: NavHostController,
+    navController: NavController,
     factory: MessageListViewModelFactory,
     modifier: Modifier = Modifier,
     messageListViewModel: MessageListViewModel = viewModel(factory = factory),
