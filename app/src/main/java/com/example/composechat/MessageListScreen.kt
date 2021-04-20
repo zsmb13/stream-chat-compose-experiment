@@ -173,7 +173,7 @@ fun MessageCard(messageItem: MessageListItem.MessageItem) {
 fun cardShapeFor(message: MessageListItem.MessageItem): Shape {
     val roundedCorners = RoundedCornerShape(16.dp)
     return when {
-        message.isMine -> roundedCorners.copy(bottomStart = CornerSize(0))
-        else -> roundedCorners.copy(bottomEnd = CornerSize(0))
+        message.isMine -> roundedCorners.copy(bottomEnd = CornerSize(0))
+        else -> roundedCorners.copy(bottomStart = CornerSize(0))
     }
 }
