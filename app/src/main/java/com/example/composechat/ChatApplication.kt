@@ -1,7 +1,6 @@
 package com.example.composechat
 
 import android.app.Application
-import com.getstream.sdk.chat.ChatUI
 import io.getstream.chat.android.client.ChatClient
 import io.getstream.chat.android.client.logger.ChatLogLevel
 import io.getstream.chat.android.client.models.User
@@ -26,8 +25,6 @@ class ChatApplication : Application() {
         ChatDomain.Builder(client, this)
             .offlineEnabled()
             .build()
-
-        ChatUI.Builder(applicationContext).build()
 
         client.connectUser(
             user,
